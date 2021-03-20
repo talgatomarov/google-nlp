@@ -1,8 +1,0 @@
-name: google-nlp
-
-docker_env:
-  image: gcr.io/titanium-vim-308109/model:v0.0.1
-
-entry_points:
-  train:
-    command: "python train.py"

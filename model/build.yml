@@ -1,5 +1,0 @@
-steps:
-  - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/titanium-vim-308109/model:v0.0.1", "."]
-images:
-  - "gcr.io/titanium-vim-308109/model:v0.0.1"
