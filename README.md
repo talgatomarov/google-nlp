@@ -30,7 +30,7 @@ to activate the virtual environment
 
 ## Artifacts
 
-To run local search engine you have to build artifacts. Run tfidf-svd.ipynb or tfidf-svd.py (from model/ folder)to build artifats
+To run local search engine you have to build artifacts. Run tfidf-svd.ipynb (from model/ folder) to build artifacts. I saved jupyter notebooks in .py format if you have issues with opening .ipynb files.
 
 ## Client
 
