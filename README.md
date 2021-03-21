@@ -30,7 +30,7 @@ to activate the virtual environment
 
 ## Artifacts
 
-To run local search engine you have to build artifacts. Run model/ifidf-svd.ipynb or model tfidf-svd.py to build artifats
+To run local search engine you have to build artifacts. Run tfidf-svd.ipynb or tfidf-svd.py (from model/ folder)to build artifats
 
 ## Client
 
