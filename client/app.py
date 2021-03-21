@@ -5,6 +5,8 @@ from annoy import AnnoyIndex
 import time
 import numpy as np
 
+st.title("Local Search Engine")
+
 # Loading dataset
 df = pd.read_csv('../data/articles.csv')
 content = df['content']
