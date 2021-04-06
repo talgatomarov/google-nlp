@@ -19,24 +19,29 @@ tfs_truncated = pickle.load(open("../artifacts/tfs_truncated.p", "rb"))
 annoy_idx = AnnoyIndex(512, 'angular')
 annoy_idx.load('../artifacts/index.ann')
 
+
+def get_idxs(query):
+    t1 = time.time()
+    query_tfs = vectorizer.transform(query)
+    query_tfs_truncated = svd.transform(query_tfs)
+
+    idxs = annoy_idx.get_nns_by_vector(query_tfs_truncated[0], 5)
+    t2 = time.time()
+
+    return idxs, t2-t1
+
+
 # Query
 raw_query = st.text_input("Query")
 query = [raw_query]
 
 if raw_query:
-    t1 = time.time()
-    query_tfs = vectorizer.transform(query)
+    idxs, delta = get_idxs(query)
+    st.write(f'Query finished in {delta} seconds')
 
-    if query_tfs.nnz > 0:
-        query_tfs_truncated = svd.transform(query_tfs)
-
-        idxs = annoy_idx.get_nns_by_vector(query_tfs_truncated[0], 5)
-        t2 = time.time()
-        st.write(f'Query finished in {t2 - t1} seconds')
-
-        for idx in idxs:
-            st.header(df.title[idx])
-            st.write(f'Article ID: {df.id[idx]}')
-            st.write(df.content[idx][:500])
-    else:
-        st.text("No results were found :(")
+    for idx in idxs:
+        st.header(df.title[idx])
+        st.write(f'Article ID: {df.id[idx]}')
+        st.write(df.content[idx][:500])
+    # else:
+    #     st.text("No results were found :(")
